@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{{ super() }}
+<p>Обратная связь</p>
+{% endblock %}
+{% block content %}
+<div id="reg_form">
+    {% for msg in get_flashed_messages() %}
+    <div class = "flash"><span>{{msg}}</span></div>
+    {% endfor %}
+    <form action="/contact" method="post" class="form-register">
+        <ul class="reg_list">
+            <li>
+                <div class="reg_title">Имя </div>
+                <input type="text" name="name" class="reg_input">
+            </li>
+            <li>
+                <div class="reg_title">Email </div>
+                <input type="text" name="email" class="reg_input">
+            </li>
+            <li>
+                <div class="reg_title">Сообщение </div>
+                <textarea name="message" id="message">Напишите своё сообщение!</textarea>
+            </li>
+        </ul>
+        <div id="reg_control">
+            <div class="reg_button" id="btn_right"><input class="button" type="submit" value="Отправить"></div>
+        </div>
+    </form> 
+</div>
+{% endblock %}

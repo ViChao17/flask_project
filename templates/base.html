@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="{{url_for('static', filename = 'css/styles.css')}}"/>
+        {% block title -%}
+            {% if title %}
+                <title>Flask - {{ title }}</title>
+            {% else %}
+                <title>Flask главная</title>
+            {% endif %}
+        {% endblock %}
+    </head>
+    <body>
+        {% block header %}
+            {%- block mainmenu -%}
+            <div class="header">
+                <ul class="mainmenu">
+                    {% for el in menu -%}
+                        <li> <a href="{{ el.url }}">{{ el.title }}</a></li>
+                    {% endfor -%}
+                    {% block user %}
+                    {% if session['userLogged'] %}
+                        <li class="userhead">
+                            <a href="{{url_for('profile', username = session['userLogged'])}}">{{ session['userLogged'] }}</a>
+                        </li>
+                    {% endif %}
+                    {% endblock %}
+                </ul>
+            </div>
+            {% endblock mainmenu -%}
+        {% endblock %}
+        <div align="center">
+            {% block content %}
+                Контент!
+            {% endblock %}    
+        </div>
+
+    </body>
+</html>

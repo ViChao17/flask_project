@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{{ super() }}
+<p>Авторизация</p>
+{% endblock %}
+{% block content %}
+<div id="reg_form">
+    <form action="/authorization" method="post" class="form-auth">
+        <ul class="reg_list">
+            <li>
+                <div class="reg_title">Логин </div>
+                <input type="text" name="login" class="reg_input">
+            </li>
+            <li>
+                <div class="reg_title">Пароль </div>
+                <input type="password" name="pass" class="reg_input">
+            </li>
+        </ul>
+        <div id="reg_control">
+            <div class="reg_button" id="btn_right"><input class="button" type="submit" value="Войти"></div>
+            <div class="reg_button" id="btn_left"><input class="button" type="button" value="Зарегестрироваться" style="margin-left: 20px;" onclick="location.href='/register'"></div>
+        </div>
+    </form> 
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block header %}
+{{ super() }}
+<p>Профиль</p>
+{% endblock %}
+{% block content %}
+<div id="reg_form">
+    <form action="/profile/{{ session['userLogged'] }}" method="post" class="form-register">
+        <ul class="reg_list">
+            <li>
+                <div class="reg_title">Имя </div>
+                <input type="text" name="name" class="reg_input" value="{{user.name}}">
+            </li>
+            <li>
+                <div class="reg_title">Инфо </div>
+                <textarea name="info" id="message">{{user.info}}</textarea>
+            </li>
+        </ul>
+        <div id="reg_control">
+            <div class="reg_button" id="btn_right"><input class="button" type="submit" value="Сохранить"></div>
+    </form>
+</div>
+
+{% endblock %}
